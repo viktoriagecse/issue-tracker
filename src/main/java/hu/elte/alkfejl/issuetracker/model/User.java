@@ -8,15 +8,14 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 /**
- * Created by Viktoria Gecse on 21/09/2017
+ * @author Godzsák Dávid <godzsakdavid@gmail.com>
  */
-
 @Entity
 @Table(name = "USERS")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = true) //use the base class' attributes as well
+@EqualsAndHashCode(callSuper = true)
 public class User extends BaseEntity {
 
     @Column(nullable = false, unique = true)
@@ -28,13 +27,11 @@ public class User extends BaseEntity {
     @Column(nullable = false)
     private String password;
 
-
-    @Enumerated(EnumType.STRING)
     @Column(nullable = false, unique = true)
+    @Enumerated(EnumType.STRING)
     private Role role;
 
     public enum Role {
         GUEST, USER, ADMIN
     }
-
 }
